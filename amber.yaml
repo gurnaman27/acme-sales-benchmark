@@ -1,0 +1,27 @@
+cat > amber.yaml << 'EOF'
+name: acme-sales-benchmark
+version: 0.4.0
+description: |
+  Enterprise sales agent benchmark that evaluates AI agents on 30 multi-step
+  CRM tasks across 4 difficulty levels. Includes composite scoring, policy
+  compliance checks, and 10-class failure taxonomy.
+repository: https://github.com/gurnaman27/acme-sales-benchmark
+docker_image: ghcr.io/gurnaman27/acme-sales-benchmark:latest
+category: multi-agent-evaluation
+capabilities:
+  - benchmark_evaluation
+  - pass_at_k_reliability
+  - policy_compliance_checking
+  - failure_taxonomy_classification
+endpoints:
+  agent_card: /.well-known/agent-card.json
+  health: /health
+  run: /run
+port: 9009
+domains:
+  - enterprise-sales
+  - crm-operations
+  - multi-step-reasoning
+contact:
+  github: gurnaman27
+EOF
