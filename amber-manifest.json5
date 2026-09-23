@@ -1,6 +1,8 @@
 {
   manifest_version: "0.1.0",
   experimental_features: ["docker"],
+
+  // Config your agent needs from the deployer
   config_schema: {
     type: "object",
     properties: {
@@ -10,7 +12,12 @@
     required: [],
     additionalProperties: false
   },
-  slots: {},
+
+  // THE MISSING BLOCK — declares A2A proxy slot
+  slots: {
+    proxy: { kind: "a2a" }
+  },
+
   program: {
     image: "ghcr.io/gurnaman27/acme-sales-benchmark:latest",
     entrypoint: "uvicorn acme.green_agent.a2a_server:app --host 0.0.0.0 --port 9009",
@@ -23,15 +30,18 @@
       ]
     }
   },
+
   provides: {
     a2a: {
       kind: "a2a",
       endpoint: "a2a_endpoint"
     }
   },
+
   exports: {
     a2a: "a2a"
   },
+
   metadata: {
     assessment_config: {
       num_tasks: 30,
