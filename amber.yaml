@@ -1,4 +1,3 @@
-cat > amber.yaml << 'EOF'
 name: acme-sales-benchmark
 version: 0.4.0
 description: |
@@ -24,4 +23,3 @@ domains:
   - multi-step-reasoning
 contact:
   github: gurnaman27
-EOF
